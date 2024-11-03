@@ -603,7 +603,7 @@ void player::renderStats( int x, int y){
     else if( floor( log10(mana) ) < 1 )
         zeros = "00";
     
-    else if( floor( log10(mana) < 2 ) )
+    else if( floor( log10(mana) ) < 2 ) )
         zeros = "0";
 
     // else zeros is "" which is default
