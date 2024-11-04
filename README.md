@@ -1,6 +1,6 @@
 ﻿# 8Bit-Fighter
 
-This was a very fun project to make, and was my first every multiplayer game
+This was a very fun project to make, and was my first multiplayer game
 
 ---
 
