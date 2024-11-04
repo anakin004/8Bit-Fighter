@@ -3,10 +3,13 @@
 #include <string.h>
 #include <cstring>
 
-const Uint16 DST_UDP_PORT = 12345;
-const Uint16 SRC_UDP_PORT = 12347;
-const Uint16 DST_TCP_PORT = 12344;
-const Uint16 SRC_TCP_PORT = 12346;
+
+// make these ports anything you like,
+// make sure that the dst ports match the ports opened on the server
+const Uint16 DST_UDP_PORT = //;
+const Uint16 SRC_UDP_PORT = //;
+const Uint16 DST_TCP_PORT = //;
+const Uint16 SRC_TCP_PORT = //;
 
 // redacted for obvious reason
 // if you want to play this yourself you put the hosts ip - ec. whereever the server is being hosted from
