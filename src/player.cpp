@@ -23,10 +23,8 @@ player::player() : mRot(0), mxVel(0), myVel(0), mpVel(1),
                     }},
                     mConnection {-1,nullptr,nullptr}
                     {
-
-                        // this should resolve to the dst tcp port
-                        Uint16 port = 12345;
-                        if (SDLNet_ResolveHost( &dst_ip, HOST , port ) < 0) {
+			    
+                        if (SDLNet_ResolveHost( &dst_ip, HOST , DST_TCP_PORT ) < 0) {
                             SDL_Log("Failed to resolve host: %s", SDLNet_GetError());
                             // Handle the error, e.g., throw an exception or set an error state
                         }
