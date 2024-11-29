@@ -10,4 +10,7 @@ who you want to play with, and make sure that every player has visibility of tha
 the actual server code does not need direct visibility of any ips
 
 
-![image](https://github.com/user-attachments/assets/bc222d93-efc2-4f91-b820-2fe6baaa527b)
+
+
+https://github.com/user-attachments/assets/3361465f-fc8d-43b3-ab6f-dd55dc6e8026
+
