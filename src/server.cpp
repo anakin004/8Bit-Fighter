@@ -1,5 +1,3 @@
-
-
 #include <SDL.h>
 #include <stdio.h>
 #include <iostream>
@@ -8,12 +6,13 @@
 #include <cstring>
 #include <SDL_net.h>
 #include <thread>
+#include <atomic>
 
 // if you are to use this code and it doesnt work, check the firewall and see if these ports are unopened and/or restriced
-const Uint16 SRC_UDP_PORT = //;
-const Uint16 DST_UDP_PORT = //;
-const Uint16 SRC_TCP_PORT = //;
-const Uint16 DST_TCP_PORT = //;
+const Uint16 SRC_UDP_PORT = 12345;
+const Uint16 DST_UDP_PORT = 12347;
+const Uint16 SRC_TCP_PORT = 12344;
+const Uint16 DST_TCP_PORT = 12346;
 const Uint8 MAX_PLAYERS = 4;
 
 struct playerState{
@@ -31,7 +30,7 @@ std::vector<IPaddress> clientIPS;
 std::vector<playerState> globalPlayers;
 std::vector<std::thread> playerThreads;
 SDL_mutex* gameMutex = nullptr;  
-bool gGameStarted = false;
+std::atomic<bool> gGameStarted(false);
 
 void printIP(const IPaddress& ip) {
     // Extract the IP address and port
@@ -91,19 +90,15 @@ void handlePacket(UDPpacket* packet, UDPsocket udpSocket) {
 
 void sendNotice( TCPsocket clientSocket ) {
 
-    SDL_LockMutex( gameMutex );
 
-    while( !gGameStarted ){
+    while( !gGameStarted.load()){
         SDL_Delay(100);
     }
-
     bool flag = true;
+
     if( SDLNet_TCP_Send( clientSocket, &flag, sizeof(flag) ) > 0 ){
         SDL_Log("Player Joined Game");
     }
-
-    //unlock after we are done 
-    SDL_UnlockMutex(gameMutex);
 
 }
 
@@ -254,11 +249,13 @@ void startServer() {
     Uint16 receivedLength = 0;
 
     int numPlayers = 0;
-    int minPlayers = 2;
+    int minPlayers = 1;
 
     while (true) {
 
+            SDL_LockMutex( gameMutex );
             if( !gGameStarted ){
+                SDL_UnlockMutex( gameMutex );
 
                 int numReadySockets = SDLNet_CheckSockets(socketSet, 5000); // 5-second timeout
 
@@ -272,16 +269,13 @@ void startServer() {
                         if (clientSocket){
                             SDLNet_TCP_AddSocket( socketSet, clientSocket );
                             numPlayers+= handleTCPClient( clientSocket );
-                        }
-                        
+                        }                        
                     }
                 }
 
                 // arbitrarily chosen
                 if(numPlayers >= minPlayers){
-                    
-                    gGameStarted = true;
-
+                    gGameStarted.store(true);
                     // join threads 
                     for( auto &it : playerThreads ){
                         if( it.joinable() )
@@ -291,6 +285,7 @@ void startServer() {
                     SDLNet_TCP_Close( tcpServerSocket );
                     SDLNet_FreeSocketSet( socketSet );
                     SDL_DestroyMutex(gameMutex);
+                    
 
                 }
 
