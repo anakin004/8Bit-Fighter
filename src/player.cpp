@@ -135,7 +135,7 @@ bool player::getInput( SDL_Event e){
 void player::recieveGameStartTCP(  SDL_mutex *mutex ){
     
     bool recv;
-        // Attempt to receive a tcp packet on mConnection.udpSocket 
+
     if (SDLNet_TCP_Recv( mConnection.tcpSocket , &recv , sizeof(bool)) > 0) {
         // Successfully received a packet, now interpret the data as a boolean
             SDL_Log("Game is starting!\n");
@@ -202,12 +202,12 @@ void player::scanGameStart() {
 
     SDL_mutex *mutex = SDL_CreateMutex();
 
-    //std::thread waitScreen( &player::renderWait, this, mutex );
+    std::thread waitScreen( &player::renderWait, this, mutex );
     std::thread TCPrecv( &player::recieveGameStartTCP, this, mutex );
 
-    //if (waitScreen.joinable()) {
-    //    waitScreen.join();  // Wait for the `renderWait` thread to finish
-    //}
+    if (waitScreen.joinable()) {
+        waitScreen.join();  // Wait for the `renderWait` thread to finish
+    }
 
     if (TCPrecv.joinable()) {
         TCPrecv.join();  // Wait for the `recieveGameStartTCP` thread to finish
