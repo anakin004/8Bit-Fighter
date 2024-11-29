@@ -9,6 +9,12 @@ so in order to play one can host locally by finding their ipv4 , private or publ
 who you want to play with, and make sure that every player has visibility of that host-ip
 the actual server code does not need direct visibility of any ips
 
+I didn't have people to play my game with at the time of making the demo so this is what I have for now haha.
+Also the loading screen is cut short by the game immeditaly starting when I joined since I set minplayers to 1 to start the game,
+but its there :),
+
+enjoy <<--- !!!!
+
 
 
 
