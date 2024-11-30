@@ -9,10 +9,10 @@
 #include <atomic>
 
 // if you are to use this code and it doesnt work, check the firewall and see if these ports are unopened and/or restriced
-const Uint16 SRC_UDP_PORT = 12345;
-const Uint16 DST_UDP_PORT = 12347;
-const Uint16 SRC_TCP_PORT = 12344;
-const Uint16 DST_TCP_PORT = 12346;
+const Uint16 SRC_UDP_PORT = //;
+const Uint16 DST_UDP_PORT = //;
+const Uint16 SRC_TCP_PORT = //;
+const Uint16 DST_TCP_PORT = //;
 const Uint8 MAX_PLAYERS = 4;
 
 struct playerState{
