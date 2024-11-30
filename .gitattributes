@@ -1,1 +1,3 @@
 src/SDL_Fontcache.c linguist-vendored
+dependencies linguist-vendored
+headers/sdl linguist-vendored
