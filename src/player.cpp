@@ -169,8 +169,10 @@ void player::renderWait( SDL_mutex *mutex ){
 
     while(true){
         SDL_LockMutex(mutex);
-        if(mGameStarted)
+        if(mGameStarted){
+	    SDL_UnlockMutex(mutex);
             break;
+	}
         SDL_UnlockMutex(mutex);
 
         Uint32 curTime = SDL_GetTicks();
