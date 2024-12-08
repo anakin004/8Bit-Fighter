@@ -248,7 +248,10 @@ void startServer() {
     SDL_Log("UDP Port opened on %d", SRC_UDP_PORT);
     Uint16 receivedLength = 0;
 
+        
     int numPlayers = 0;
+
+        // set this as you please, also set max players as you want
     int minPlayers = 1;
 
     while (true) {
