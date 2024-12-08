@@ -105,7 +105,7 @@ void connectToServer(const char* ip, responseData &r) {
             SDL_Log("Failed to resolve server address: %s", SDLNet_GetError());
         
         else{
-            UDPsocket udpSocket = SDLNet_UDP_Open(SRC_UDP_PORT); // we can choose port if irts not in use / valid port
+            UDPsocket udpSocket = SDLNet_UDP_Open(SRC_UDP_PORT); // we can choose port if its not in use / valid port
 
             if (!udpSocket) 
                 SDL_Log("Failed to open UDP socket: %s", SDLNet_GetError());
