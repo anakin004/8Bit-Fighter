@@ -63,7 +63,7 @@ bool performTCPHandshake(const char* ip, responseData &r ) {
 }
 
 void testSendUDP(UDPsocket udpSocket) {
-    UDPpacket *packet = SDLNet_AllocPacket(sizeof(bool));  // Allocate memory for packet
+    UDPpacket *packet = SDLNet_AllocPacket(sizeof(bool));
     if (!packet) {
         SDL_Log("Failed to allocate UDP packet: %s", SDLNet_GetError());
         return;
@@ -75,10 +75,10 @@ void testSendUDP(UDPsocket udpSocket) {
         return;
     }
 
-    packet->address = dest_ip;  // Set destination address and port
-    bool value = true;  // The boolean value you want to send
-    memcpy(packet->data, &value, sizeof(bool));  // Copy the bool value into packet data
-    packet->len = sizeof(bool);  // Set the packet length to the size of a bool
+    packet->address = dest_ip;  // setting destination address and port
+    bool value = true;  // 
+    memcpy(packet->data, &value, sizeof(bool));  
+    packet->len = sizeof(bool);  // setting the packet length to the size of a bool
 
     if (SDLNet_UDP_Send(udpSocket, -1, packet) == 0) {
         SDL_Log("Failed to send UDP packet: %s", SDLNet_GetError());
@@ -86,13 +86,13 @@ void testSendUDP(UDPsocket udpSocket) {
         SDL_Log("Packet sent successfully");
     }
 
-    SDLNet_FreePacket(packet);  // Free the allocated packet
+    SDLNet_FreePacket(packet); 
 }
 
 
 // Switch to UDP
 void connectToServer(const char* ip, responseData &r) {
-    // Step 1: Establish TCP connection
+
     if ( !performTCPHandshake(ip, r) ) {
         SDL_Log("COudlnt preform tcp");
     }
