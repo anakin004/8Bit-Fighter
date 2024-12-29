@@ -7,9 +7,6 @@
 - Retro 8-bit style graphics.
 - Cross-platform compatibility.
 
-### Repository Link
-[GitHub Repository](https://github.com/anakin004/8Bit-Fighter)
-
 ## Getting Started
 
 ### Prerequisites
