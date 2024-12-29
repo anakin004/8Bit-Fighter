@@ -1,4 +1,3 @@
-# 8Bit Fighter Documentation
 
 ## Introduction
 
