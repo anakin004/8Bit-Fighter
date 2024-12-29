@@ -42,8 +42,8 @@ Before you begin, ensure you have the following installed:
 
 ### Controls
 Provide detailed information about the player controls:
-- **Movement**: Arrow keys or WASD (customizable).
-- **Actions**: Specify key bindings for attack, defend, etc.
+- **Movement**: WASD 
+- **Actions**: LMB to shoot projectiles, arrow keys to cycle through projectile sprites
 
 
 ## Development
