@@ -27,12 +27,7 @@ Before you begin, ensure you have the following installed:
     ```bash
     cd 8Bit-Fighter
     ```
-3. **Build the Project:**
-   - If a `Makefile` is provided:
-     ```bash
-     make
-     ```
-   - For custom build instructions, refer to the `README.md` or project files.
+
 
 ## Configuration
 
